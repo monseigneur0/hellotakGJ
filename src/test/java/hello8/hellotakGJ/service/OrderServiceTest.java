@@ -1,10 +1,13 @@
 package hello8.hellotakGJ.service;
 
-import jpabook.jpashop.domain.*;
-import jpabook.jpashop.domain.item.Book;
-import jpabook.jpashop.domain.item.Item;
-import jpabook.jpashop.repository.MemberRepository;
-import jpabook.jpashop.repository.OrderRepository;
+import hello8.hellotakGJ.domain.Address;
+import hello8.hellotakGJ.domain.Member;
+import hello8.hellotakGJ.domain.Order;
+import hello8.hellotakGJ.domain.OrderStatus;
+import hello8.hellotakGJ.domain.item.Book;
+import hello8.hellotakGJ.domain.item.Item;
+import hello8.hellotakGJ.repository.MemberRepository;
+import hello8.hellotakGJ.repository.OrderRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +27,10 @@ class OrderServiceTest {
     EntityManager em;
 
     @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
-    @Autowired OrderRepository orderRepository;
+    @Autowired
+    MemberRepository memberRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
     @Autowired OrderService orderService;
 
