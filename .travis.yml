@@ -13,7 +13,6 @@ cache:
      - '$HOME/.gradle'
 script: "./gradlew clean build"
 
-
 before_deploy:
   - zip -r hellotakgj *
   - mkdir -p deploy
@@ -28,7 +27,7 @@ deploy:
     skip_cleanup: true
     acl: private # zip file access is private
     local_dir: deploy # before_deploy 에서 생성한 directory
-    wait-unitl-deployed: true
+    wait-until-deployed: true
 
   - provider: codedeploy
       access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
