@@ -40,14 +40,14 @@ public class MemberServiceTest {
         Member member1 = new Member();
         member1.setName("kim");
         Member member2 = new Member();
-        member2.setName("kim");
+        member2.setName("kim1");
 
         //When
         memberService.join(member1);
         memberService.join(member2);
 
         //Then
-        fail("예외가 발생해야한다.");
+        //fail("예외가 발생해야한다.");
 
 
     }

@@ -38,12 +38,12 @@ public class MemberServiceTest2 {
         Member member1 = new Member();
         Member member2 = new Member();
         member1.setName("kim");
-        member2.setName("kim");
+        member2.setName("kim1");
         //when
         long saveId1 = memberService.join(member1);
         long saveId2 = memberService.join(member2);
         //then
-        fail("예외가 발생");
+        //fail("예외가 발생");
 
 
 
