@@ -4,7 +4,10 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+.gitignore
 build.gradle
+!**/src/test/
+/src/test/
 
 !**/src/main/resources/application-real.properties
 !**/src/main/resources/application.properties
