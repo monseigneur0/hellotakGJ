@@ -15,8 +15,6 @@ public class MyBatisController {
     @Autowired
     private MyBatisService myBatisService;
 
-
-    @GetMapping("/mybatis")
     public String mybatis(Model model) {
 
         List<MyBatis> mybatisList = myBatisService.getAllMember();
