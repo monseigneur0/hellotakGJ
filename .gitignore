@@ -1,14 +1,19 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
+.gitignore
+
+### build
 !**/src/main/**/build/
 !**/src/test/**/build/
-.gitignore
-build.gradle
+.gradle
+build/
+
+### Test
 !**/src/test/
 /src/test/
 
+### local setting ###
+HELP.md
+!gradle/wrapper/gradle-wrapper.jar
+build.gradle
 !**/src/main/resources/application-real.properties
 !**/src/main/resources/application.properties
 ### STS ###
