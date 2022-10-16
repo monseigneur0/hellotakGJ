@@ -28,7 +28,7 @@ public class FileController {
     @GetMapping("/uploadk")
     public String testUploadForm() {
 
-        return "fileupload/fileform";
+        return "fileupload/fileform2";
     }
 
     @PostMapping("/uploadk")
