@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Item {
+public class FileItemForm {
 
     //업로드 하려는 파일
     private Long id;

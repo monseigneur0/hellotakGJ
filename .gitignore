@@ -6,10 +6,6 @@
 .gradle
 build/
 
-### Test
-!**/src/test/
-/src/test/
-
 ### local setting ###
 HELP.md
 !gradle/wrapper/gradle-wrapper.jar
