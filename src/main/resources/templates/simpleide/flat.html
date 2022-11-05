@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <title>Code Editor</title>
-    <h1>simple and free6</h1>
+    <h1>simple and free flat</h1>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel=stylesheet href="/codemirror/lib/codemirror.css">
     <link rel=stylesheet href="/codemirror/doc/docs.css">
+    <link href="/codemirror/theme/darcula.css" rel="stylesheet">
+    <link href="/codemirror/theme/rubyblue.css" rel="stylesheet">
+
     <script src="/codemirror/lib/codemirror.js"></script>
     <script src="/codemirror/mode/xml/xml.js"></script>
     <script src="/codemirror/mode/javascript/javascript.js"></script>
@@ -98,11 +101,15 @@
         lineNumbers: true,
         mode: "text/html",
         matchBrackets: true,
-        autocomplete: true
+        autocomplete: true,
+        theme: "rubyblue",
+        autoCloseTags: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"},
     });
     var editor2 = CodeMirror.fromTextArea(document.getElementById("css"), {
         lineNumbers: true,
         mode: "text/css",
+        theme: "rubyblue",
         matchBrackets: true
     });
     var editor3 = CodeMirror.fromTextArea(document.getElementById("js"), {
