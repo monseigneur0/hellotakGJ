@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <title>Code Editor</title>
-    <h1>simple and free flat</h1>
+    <h1>simple and free flat home</h1>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel=stylesheet href="/codemirror/lib/codemirror.css">
@@ -15,26 +15,30 @@
     <script src="/codemirror/mode/css/css.js"></script>
     <script src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
     <script src="/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="/codemirror/addon/edit/closetag.js"></script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+
     <style>
-        .CodeMirror { height: auto; border: 1px solid #ddd; }
-        .CodeMirror-scroll { max-height: 200px; }
+        .CodeMirror { height: 700px; border: 1px solid #ddd; }
+        .CodeMirror-scroll { max-height: 700px; }
 
         body {
             text-align: left;
         }
 
-        /*textarea {*/
-        /*    width: 32%;*/
-        /*    float: top;*/
-        /*    min-height: 250px;*/
-        /*    overflow: scroll;*/
-        /*    margin: auto;*/
-        /*    display: inline-block;*/
-        /*    background: #f4f4f9;*/
-        /*    outline: none;*/
-        /*    font-family: Courier, sans-serif;*/
-        /*    font-size: 14px;*/
-        /*}*/
+        textarea {
+            width: 32%;
+            float: top;
+            min-height: 250px;
+            overflow: scroll;
+            margin: auto;
+            display: inline-block;
+            background: #f4f4f9;
+            outline: none;
+            font-family: Courier, sans-serif;
+            font-size: 14px;
+        }
 
         iframe {
             bottom: 0;
@@ -42,82 +46,46 @@
             width: 100%;
             height: 15em;
         }
+        #html {
+            height: 800px;
+        }
+
     </style>
 </head>
 
 <body>
-<textarea id="html" align="left"><h1>되냐</h1></textarea>
-<p1>css </p1>
+    <textarea id="html" align="left"><h1>되냐</h1></textarea>
 
-<textarea id="css" placeholder="CSS">h1{ color: red };</textarea>
-<p1> javascript</p1>
+    <iframe id="code"></iframe>
 
-<textarea id="js" placeholder="JavaScript"> </textarea>
 
-<iframe id="code"></iframe>
-<p1>https://enlight.nyc/projects/code-editor</p1>
+    <script>
+        var html = document.getElementById("html");
+        var code = document.getElementById("code").contentWindow.document;
+        console.log(html.value);
+        document.body.onkeyup = function() {
+            code.open();
+            let text = "";
+            for(let ii=0; ii<editor.display.view.length; ii++){
+                text = text + editor.display.view[ii].line.text;
+            };
 
-<script>
-    var html = document.getElementById("html");
-    var css = document.getElementById("css");
-    var js = document.getElementById("js");
-    var code = document.getElementById("code").contentWindow.document;
-    console.log(html.value);
-    document.body.onkeyup = function() {
-        code.open();
-        let text = "";
-        for(let ii=0; ii<editor.display.view.length; ii++){
-            text = text + editor.display.view[ii].line.text;
-
-        };
-        let text2 = "";
-        for(let ii=0; ii<editor2.display.view.length; ii++){
-            text2 = text2 + editor2.display.view[ii].line.text;
-
-        };
-        let text3 = "";
-        for(let ii=0; ii<editor3.display.view.length; ii++){
-            text3 = text3 + editor3.display.view[ii].line.text;
-
+            code.writeln( text );
+            code.close();
         };
 
-        code.writeln( text + "<"+'style'+">" + text2 + '<'+"/style"+'>' + "<"+'script'+">" + text3 + '<'+"/script"+'>' );
-        code.close();
-        //console.log( editor.display.view.line.text);
+        var editor = CodeMirror.fromTextArea(document.getElementById("html"), {
+            lineNumbers: true,
+            lineWrapping: true,
+            mode: "text/html",
+            autoCloseTags: true,
+            matchBrackets: true,
+            autocomplete: true,
+            styleActiveLine: true,
+            theme: "rubyblue",
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+        });
 
-        //let acc = editor.display.view.reduce((acc,result)=>{
-        //   acc = acc + result.line.text;
-        //}, acc="");
-
-
-        //editor.display.view.forEach(obj=>{
-        //    text = text + obj.line.text;
-        //});
-        console.log(text);
-        [{}]
-    };
-
-    var editor = CodeMirror.fromTextArea(document.getElementById("html"), {
-        lineNumbers: true,
-        mode: "text/html",
-        matchBrackets: true,
-        autocomplete: true,
-        theme: "rubyblue",
-        autoCloseTags: true,
-        extraKeys: {"Ctrl-Space": "autocomplete"},
-    });
-    var editor2 = CodeMirror.fromTextArea(document.getElementById("css"), {
-        lineNumbers: true,
-        mode: "text/css",
-        theme: "rubyblue",
-        matchBrackets: true
-    });
-    var editor3 = CodeMirror.fromTextArea(document.getElementById("js"), {
-        lineNumbers: true,
-        mode: "text/javascript",
-        matchBrackets: true
-    });
-
-</script>
+    </script>
 </body>
 </html>

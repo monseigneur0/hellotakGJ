@@ -1,0 +1,138 @@
+<script src="/codemirror/mode/javascript/javascript.js"></script>
+<script src="/codemirror/mode/css/css.js"></script>
+<script src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/codemirror/addon/display/fullscreen.js"></script>
+<script src="/codemirror/keymap/sublime.js"></script>
+<script src="/codemirror/addon/hint/show-hint.js"></script>
+<script src="/codemirror/addon/hint/css-hint.js"></script>
+<script src="/codemirror/addon/hint/javascript-hint.js"></script>
+
+<h3>Editor</h3>
+<div class="control-group">
+    <label class="control-label">HTML</label>
+    <div class="controls">
+        <textarea class="code" name="code" id="codert" cols="40" rows="5" placeholder="Enter code here ..." style="width: 810px; height: 200px">
+       </textarea>
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label">CSS</label>
+    <div class="controls">
+          <textarea id="code" class="code" name="codeCSS"  cols="40" rows="5" placeholder="Enter code here ..." style="width: 810px; height: 200px">
+        </textarea>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label">javascript</label>
+    <div class="controls">
+            <textarea id="codeJS" class="code" name="codeJS"  cols="40" rows="5" placeholder="Enter code here ..." style="width: 0px; height: 0px">
+           </textarea>
+    </div>
+</div>
+
+<script>
+
+    function loadCSS() {
+        var $head = $("#preview").contents().find("head");
+        $head.html("<style>" + editor.getValue() + "</style>");
+    };
+
+    function loadJS() {
+        var scriptTag = "<script>"+editorJS.getValue()+"<";
+        scriptTag +=  "/script>";
+
+        var previewFrame2 = document.getElementById('preview');
+        var preview2 =  previewFrame2.contentDocument ||  previewFrame2.contentWindow.document;
+        preview2.open();
+        preview2.write(editor2.getValue()+scriptTag);
+        preview2.close();
+
+        loadCSS();
+    };
+
+    var delay;
+    // Initialize CodeMirror editor with a nice html5 canvas demo.
+
+    // css editor
+    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: "text/x-scss",
+        keyMap: "sublime",
+        theme: 'monokai',
+        autoCloseTags: true,
+        lineWrapping: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+    });
+    editor.on("change", function() {
+        clearTimeout(delay);
+
+        delay = setTimeout(updatePreview, 0);
+    });
+
+    function updatePreview() {
+        loadCSS();
+    }
+    setTimeout(updatePreview, 0);
+
+
+    var delay2;
+    // Initialize CodeMirror editor with a nice html5 canvas demo.
+    var editor2 = CodeMirror.fromTextArea(document.getElementById('codert'), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: "text/html",
+        keyMap: "sublime",
+        theme: 'monokai',
+        autoCloseTags: true,
+        lineWrapping: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+    });
+    editor2.on("change", function() {
+        clearTimeout(delay2);
+
+        delay2 = setTimeout(updatePreview2, 0);
+    });
+
+    function updatePreview2() {
+        var scriptTag = "<script>"+editorJS.getValue()+"<";
+        scriptTag +=  "/script>";
+
+        var previewFrame2 = document.getElementById('preview');
+        var preview2 =  previewFrame2.contentDocument ||  previewFrame2.contentWindow.document;
+        preview2.open();
+        preview2.write(editor2.getValue()+scriptTag);
+        preview2.close();
+
+        loadCSS();
+    }
+    setTimeout(updatePreview2, 0);
+
+
+    var delayJS;
+    // Initialize CodeMirror editor with a nice html5 canvas demo.
+    var editorJS = CodeMirror.fromTextArea(document.getElementById('codeJS'), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: 'javascript',
+        keyMap: "sublime",
+        theme: 'monokai',
+        autoCloseTags: true,
+        lineWrapping: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+    });
+    editorJS.on("change", function() {
+        clearTimeout(delayJS);
+
+        delayJS = setTimeout(updatePreviewJS, 0);
+    });
+
+    function updatePreviewJS() {
+        loadJS();
+    }
+    setTimeout(updatePreviewJS, 0);
+</script>
