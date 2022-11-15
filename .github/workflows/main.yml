@@ -5,7 +5,7 @@ on:
   
 env: # 새로 추가한 부분
   S3_BUCKET_NAME: hellotakgjbuild
-  PROJECT_NAME: playground-logging
+  PROJECT_NAME: hellotakGJ
 
 jobs:
   build:
@@ -50,4 +50,4 @@ jobs:
         run: aws s3 cp --region ap-northeast-2 ./deploy/$GITHUB_SHA.zip s3://${{ secrets.S3_BUCKET_NAME }}/$GITHUB_SHA.zip
 
       - name: CodeDeploy deploy
-        run: aws deploy create-deployment --application-name covid19vaccinereview --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name covid19vaccinereview-group --s3-location bucket=${{ secrets.S3_BUCKET_NAME }},bundleType=zip,key=$GITHUB_SHA.zip
+        run: aws deploy create-deployment --application-name hellotakgj --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name hellotakgjgroup --s3-location bucket=${{ secrets.S3_BUCKET_NAME }},bundleType=zip,key=$GITHUB_SHA.zip
