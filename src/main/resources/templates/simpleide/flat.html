@@ -1,13 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>Code Editor</title>
-    <h1>simple and free flat home</h1>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel=stylesheet href="/codemirror/lib/codemirror.css">
     <link rel=stylesheet href="/codemirror/doc/docs.css">
     <link href="/codemirror/theme/darcula.css" rel="stylesheet">
     <link href="/codemirror/theme/rubyblue.css" rel="stylesheet">
+    <link href="/codemirror/theme/dracula.css" rel="stylesheet">
 
     <script src="/codemirror/lib/codemirror.js"></script>
     <script src="/codemirror/mode/xml/xml.js"></script>
@@ -20,8 +21,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" >
 
     <style>
-        .CodeMirror { height: 700px; border: 1px solid #ddd; }
-        .CodeMirror-scroll { max-height: 700px; }
+        .CodeMirror { height: 800px; border: 1px solid #ddd; }
+        .CodeMirror-scroll { max-height: 800px; }
 
         body {
             text-align: left;
@@ -30,7 +31,7 @@
         textarea {
             width: 32%;
             float: top;
-            min-height: 250px;
+            min-height: 300px;
             overflow: scroll;
             margin: auto;
             display: inline-block;
@@ -51,13 +52,37 @@
         }
 
     </style>
+
 </head>
 
 <body>
-    <textarea id="html" align="left"><h1>되냐</h1></textarea>
+<h1>simple and free html code editor</h1>
 
-    <iframe id="code"></iframe>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mh-100 bg-primary">
+            <textarea id="html" align="left"><!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world!</h1>
+</body>
+</html></textarea>
+        </div>
+        <div class="col bg-danger">
+            <iframe id="code"></iframe>
+        </div>
+        <div class="col-1 bg-info">
+            ad
+        </div>
+    </div>
+</div>
 
     <script>
         var html = document.getElementById("html");
@@ -82,8 +107,8 @@
             matchBrackets: true,
             autocomplete: true,
             styleActiveLine: true,
-            theme: "rubyblue",
-            extraKeys: {"Ctrl-Space": "autocomplete"},
+            theme: "dracula",
+            extraKeys: {"Ctrl-Space": "autocomplete"}
         });
 
     </script>
