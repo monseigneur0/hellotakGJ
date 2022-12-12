@@ -2,6 +2,8 @@ name: CI
 
 on:
   workflow_dispatch:
+  push:
+    branches: master
   
 env: # 새로 추가한 부분
   S3_BUCKET_NAME: hellotakgjbuild
