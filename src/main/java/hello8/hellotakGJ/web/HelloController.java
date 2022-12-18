@@ -14,14 +14,5 @@ public class HelloController {
         model.addAttribute("data", "hello!!!");
         return "hello";
     }
-    @GetMapping("/hola")
-    public String hola() {
-        return "hola";
-    }
 
-    @GetMapping("/hola/dto")
-    public HolaResponseDto holaDto(@RequestParam("name") String name,
-                                   @RequestParam("amount") int amount) {
-        return new HolaResponseDto(name, amount);
-    }
 }
